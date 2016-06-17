@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "#' calculate the density of Clayton copula.\n#'\n#' compute the density of Clayton copula given the two individual variables.\n#'\n#' @param u a vector containing cumulative densities for one replicate data.\n#' @param v a vector containing cumulative densities for the other replicate data.\n#' @param beta the single paramter for the Clayton copula. It has a range of (0, \\eqn{\\infty}),\n#' perfect dependence is archieved if \\eqn{\\beta} approximates \\eqn{\\infty}, while \\eqn{\\beta} approximates 0\n#' implies no dependence.\n#' @details The formula for the density of bivariate Clayton copula is:\n#' \\deqn{c(u, v | \\beta) = (1+\\beta)*((u*v)^(-1-\\beta))*(u^(-\\beta)+v^(-\\beta)-1)^(-1/\\beta-2)}\n#' where \\eqn{\\beta > 0} in our application.\n#' @references Nelsen, R. (2006). An Introduction to Copula, Second Edition, Springer.\n#' G. G. Venter (2001). Tails of copulas. In Proceedings ASTIN Washington, USA, pages 68-113.\n#' @return dclayton calculates the density of Clayton copula given the cumulative densities of\n#' two random variables and the parameter of Clayton copula. The empirical cumulative densities\n#' of the two random variables could be obtained using the function \\code{empdist()}. Invalid arguments\n#' will result in value \\code{NaN}.\n#' @export\n#' @examples\n#' data(Chipseq_TF)\n#' x1 <- Chipseq_TF[,1]\n#' x2 <- Chipseq_TF[,2]\n#' U=empdist(x1, x2)\n#' u <- U[,1]\n#' v <- U[,2]\n#' beta <- 2\n#' dclayton(u, v, beta)\n\ndclayton = function(u, v, beta){\n  if (beta <=0 && !is.numeric(beta))\n    stop(\"invalid argument : beta\\n\")\n  else{\n    m = u^(-beta)+v^(-beta)-1\n    dclay=(1+beta)*((u*v)^(-1-beta))*(u^(-beta)+v^(-beta)-1)^(-1/beta-2)\n  }\n  return(dclay)\n}\n\n\n\n",
+    "created" : 1466101179689.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3740838648",
+    "id" : "9AC9D546",
+    "lastKnownWriteTime" : 1466184600,
+    "last_content_update" : 1466184600787,
+    "path" : "~/TDR/R/dclayton.R",
+    "project_path" : "R/dclayton.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

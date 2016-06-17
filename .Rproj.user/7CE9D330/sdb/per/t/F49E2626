@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "#' Add cushion for sequencing data.\n#'\n#' Add a cushion for sequencing data which reduces the discrepancy of read counts that\n#' has no biological meaning but greatly increases the discordance in ranks of the data.\n#'\n#' @param dat a matrix that has two columns, each of them represent a replicate of data,\n#' i.g., sequencing counts for genomic loci.\n#' @param cush an integer, the differece in sequencing counts that are deemed the same.\n#' For example, if a cush of 2 is chosen, the read count of 4 at a loci of replicate 1 and\n#' the read count of 6 at the same loci of replicate 2 are deemed the same. The 6 in replicate 2\n#' is corrected to 4.\n#' @return This function returns a matrix of two colunms of data, i.g., seqencing counts. Each\n#' column is a vector a counts after correction to eliminate the discordance between two\n#' replicates in ranks.\n#' @export\n#' @examples\n#' data(Chipseq_TF)\n#' cush <- 2\n#' seqcush(Chipseq_TF, cush)\n\nseqcush = function(dat, cush) {\n  if (cush < 0 && !is.numeric(cush))\n    stop(\"invalid cushion : alpha\\n\")\n  else{\n  idx = which(abs(dat[,1]-dat[,2])<=cush)\n  dat[idx,1] = dat[idx,2]\n  }\n  return(dat)\n}\n",
+    "created" : 1466004702392.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1069895921",
+    "id" : "F49E2626",
+    "lastKnownWriteTime" : 1466180913,
+    "last_content_update" : 1466180913959,
+    "path" : "~/TDR/R/seqcush.R",
+    "project_path" : "R/seqcush.R",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

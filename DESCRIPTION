@@ -1,0 +1,11 @@
+Package: TDR
+Type: Package
+Title: Estimate the reproducibility of sequencing-based experiment
+Version: 0.1.0
+Author: Tao Yang
+Maintainer: Tao Yang <xadmyangt@gmail.com>
+Description: This is a package to measure reproducibility of genomic data(i.g., sequencing-based data such as ChIP-seq, RNA-seq) using the tail dependences of copula. The replicated data are modeled by mixture of Gumbel copula and Clayton copula. This pacakge is an implementation of the paper "Evaluating the Reproducibility and Quality of High Throughput Sequencing Data with Tail Dependences of Mixture Copula" (2016), by Tao Yang, Feng Yue, Qunhua Li.
+License: GPL (>= 2.0)
+LazyData: TRUE
+RoxygenNote: 5.0.1
+Depends: R (>= 3.1.0)

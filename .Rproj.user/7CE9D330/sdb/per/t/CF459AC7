@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "#' calcuate the density of Gumbel copula\n#'\n#' compute the density of Gumbel copula given the two individual variables, i.g. sequencing read counts.\n#'\n#' @param u a vector containing cumulative densities for one replicate data.\n#' @param v a vector containing cumulative densities for the other replicate data.\n#' @param alpha the single paramter for the Gumbel copula. It has a range of (0, 1], perfect dependence\n#' is archieved if \\eqn{\\alpha} approximates 0, while \\eqn{\\alpha = 0} implies no dependence.\n#' @details The formula for the distribution of bivariate Clayton copula is:\n#' \\deqn{C(u, v | \\alpha) = exp(-((-log(u))^\\alpha+(-log(v))^\\alpha)^(1/\\alpha))}\n#' The formula for the corresponding density is:\n#' \\deqn{c(u, v | \\alpha) = C(u, v | \\alpha)*(u*v)^(-1)*((-log(u))^\\alpha+\n#'                  (-log(v))^\\alpha)^(-2+2/\\alpha)*(log(u)*log(v))^(\\alpha-1)*\n#'                  (1+(\\alpha-1)*((-log(u))^\\alpha+(-log(v))^\\alpha)^(-1/\\alpha))}\n#'  where \\eqn{0 < \\alpha \\le 0} in our application.\n#' @references Nelsen, R. (2006). An Introduction to Copula, Second Edition, Springer.\n#' G. G. Venter (2001). Tails of copulas. In Proceedings ASTIN Washington, USA, pages 68-113.\n#' @return dgumbel calculates the density of Gumbel copula given the cumulative densities of two random\n#' variables and the parameter of Gumbel copula. The empirical cumulative densities of the two random\n#' variables could be obtained using the function \\code{empdist()}. Invalid arguments will result in value \\code{NaN}.\n#' @export\n#' @examples\n#' data(Chipseq_TF)\n#' x1 <- Chipseq_TF[,1]\n#' x2 <- Chipseq_TF[,2]\n#' U=empdist(x1, x2)\n#' u <- U[,1]\n#' v <- U[,2]\n#' alpha <- 2\n#' dgumbel(u, v, alpha)\n\ndgumbel = function(u, v, alpha){\n  if (alpha < 1 && !is.numeric(alpha))\n    stop(\"invalid argument : alpha\\n\")\n  else{\n    pgumb = exp(-((-log(u))^alpha+(-log(v))^alpha)^(1/alpha))\n    dgumb = pgumb*(u*v)^(-1)*((-log(u))^alpha+(-log(v))^alpha)^(-2+2/alpha)*(log(u)*log(v))^(alpha-1)*(1+(alpha-1)*((-log(u))^alpha+(-log(v))^alpha)^(-1/alpha))\n  }\n  return(dgumb)\n}\n\n",
+    "created" : 1466101118668.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2973359669",
+    "id" : "CF459AC7",
+    "lastKnownWriteTime" : 1466183548,
+    "last_content_update" : 1466183548824,
+    "path" : "~/TDR/R/dgumbel.R",
+    "project_path" : "R/dgumbel.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

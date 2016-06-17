@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "#' Tail dependence as reproducibility measure.\n#'\n#' Estimate the reproducibility of sequencing-based data using tail dependence of mixture copula model.\n#'\n#' The major functions you're likely to need from \\pkg{TDR} is \\code{\\link{TDR.est}} and \\code{\\link{TailD}}\n\n\"_PACKAGE\"\n",
+    "created" : 1466105296949.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2502694695",
+    "id" : "288CE295",
+    "lastKnownWriteTime" : 1466105543,
+    "last_content_update" : 1466105543273,
+    "path" : "~/TDR/R/TDR.R",
+    "project_path" : "R/TDR.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 8,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

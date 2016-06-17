@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "#' extracting proportion, upper tail dependence and lower tail dependence\n#'\n#' function to extract proportion, upper tail dependence and lower tail dependence\n#'\n#' @param object the output from the function TDR.est\n#' @return\n#' \\itemize{\n#'  \\item {pi} {the proportion parameter that indicates how much of mixture model is contributed by Clayton copula.}\n#'  \\item {UT} {the upper tail dependence coefficient.}\n#'  \\item {LT} {the lower tail dependence coefficient.}\n#' }\n#' @references Evaluating the Reproducibility and Quality of High Throughput Sequencing Data with Tail Dependences\n#' of Mixture Copula (2016). Tao Yang, Feng Yue, Qunhua Li.\n#' @export\n#' @examples\n#' data(Chipseq_TF)\n#' x1 <- Chipseq_TF[,1]\n#' x2 <- Chipseq_TF[,2]\n#' U=empdist(x1, x2)\n#' u <- U[,1]\n#' v <- U[,2]\n#' test <- TDR.est(u, v)\n#' TailD(test)\n\nTailD = function(object)\n{\n  trace=object[[1]]\n  p= trace[nrow(trace),1]\n  UT = (1-trace[nrow(trace),1])*(2-2^(1/trace[nrow(trace), 2]))\n  LT = trace[nrow(trace),1]*2^(-1/trace[nrow(trace), 3])\n  para = c(p, UT, LT)\n  names(para) = c(\"pi\", \"UT\", \"LT\")\n  para\n}\n",
+    "created" : 1466101271400.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2551572491",
+    "id" : "49DD0EA0",
+    "lastKnownWriteTime" : 1466181471,
+    "last_content_update" : 1466181471696,
+    "path" : "~/TDR/R/TailD.R",
+    "project_path" : "R/TailD.R",
+    "properties" : {
+        "tempName" : "Untitled3"
+    },
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
